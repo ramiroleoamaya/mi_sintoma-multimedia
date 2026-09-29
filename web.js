@@ -111,3 +111,77 @@ function validarMapa(mapa) {
 
 // Ejecución
 console.log(validarMapa(mapaConceptualUTN));
+// Configuración Mobile-First con Bootstrap para la web
+const estructuraWeb = {
+  proyecto: "mi_sintoma",
+  sello: "ALIEN RECORDS",
+  enfoque: "Mobile First",
+  frameworkUI: "Bootstrap 5",
+  secciones: ["Header / Hero", "Galería Multimedial", "Catálogo Musical", "Contacto / Redes"]
+};
+
+function verificarLayout(web) {
+  if (web.enfoque === "Mobile First" && web.frameworkUI.includes("Bootstrap")) {
+    return `[LAYOUT LISTO] Sitio de '${web.proyecto}' maquetado bajo enfoque ${web.enfoque} usando ${web.frameworkUI}. Secciones cargadas: ${web.secciones.length}.`;
+  } else {
+    return "[ERROR DE DISEÑO] Falta definir el enfoque responsive.";
+  }
+}
+
+// Ejecución
+const estadoLayout = verificarLayout(estructuraWeb);
+
+// VERIFICACIÓN DE RIGOR: Consola
+console.log("Estado del Maquetado Web:", estadoLayout);
+// Configuración de Grilla y Componentes UI (Mobile-First)
+const layoutBootstrap = {
+  version: "5.3",
+  mallaGrid: "Container -> Row -> Col-12 (Mobile) / Col-md-6 (Desktop)",
+  componentes: [
+    { nombre: "Navbar", tipo: "Encabezado responsive con hamburguesa" },
+    { nombre: "Hero Section", tipo: "Banner principal con marca mi_sintoma" },
+    { nombre: "Catalog", tipo: "Grilla de productos/música (Cards)" },
+    { nombre: "Footer", tipo: "Sello ALIEN RECORDS & Redes Sociales" }
+  ]
+};
+
+function construirEstructuraDOM(layout) {
+  const cantidadComponentes = layout.componentes.length;
+  return `[DOM CONSTRUIDO] Sistema de grilla '${layout.mallaGrid}' activo con ${cantidadComponentes} componentes listos para Bootstrap ${layout.version}.`;
+}
+
+// Ejecución
+const estadoDOM = construirEstructuraDOM(layoutBootstrap);
+
+// REGLA DE ORO: Verificación en consola
+console.log("Verificación de Layout Bootstrap:", estadoDOM);
+// Captura y manipulación del DOM (Simulación de potenciómetro Green Amps)
+const estadoAmpli = {
+  encendido: false,
+  ganancia: "11/10"
+};
+
+function conmutarEncendido() {
+  estadoAmpli.encendido = !estadoAmpli.encendido;
+  const mensaje = estadoAmpli.encendido 
+    ? `[GREEN AMPS ON] Valvulas al rojo vivo. Ganancia: ${estadoAmpli.ganancia}.`
+    : "[GREEN AMPS OFF] Standby activo.";
+  return mensaje;
+}
+
+// Evento de escucha si estamos en entorno navegador o consola
+if (typeof window !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const boton = document.getElementById('btn-ampli');
+    if (boton) {
+      boton.addEventListener('click', () => {
+        const respuesta = conmutarEncendido();
+        console.log("Estado del DOM:", respuesta);
+        alert(respuesta);
+      });
+    }
+  });
+}
+
+// VERIFICACIÓN DE RIGOR EN CONSOLA (Node.js)
+console.log("Test de Conmutador DOM:", conmutarEncendido());
