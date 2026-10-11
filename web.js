@@ -261,3 +261,31 @@ function verificarCircuitoEntrega(entrega) {
 
 // REGLA DE ORO: Verificación en consola (Node.js)
 console.log("Chequeo Final de Entrega:", verificarCircuitoEntrega(entregaFinalUTN));
+// Objeto que representa el Manual de Marca de ALIEN RECORDS / mi_sintoma
+const manualDeMarca = {
+  formato: "PDF",
+  minPaginas: 6,
+  maxPaginas: 12,
+  nombreArchivoRequerido: "UTN_DMD_U7-8_AmayaRamiro_ManualMarca.pdf",
+  paletaHEX: ["#121212", "#F4F1EA", "#D32F2F", "#39FF14"]
+};
+
+// Función para verificar que el documento cumple con la consigna de la UTN
+function verificarEntrega(cantPaginas, nombreArchivo) {
+  console.log("--- AUDITORÍA DE ENTREGABLE DE MARCA ---");
+  
+  if (cantPaginas < manualDeMarca.minPaginas || cantPaginas > manualDeMarca.maxPaginas) {
+    console.warn(`⚠️ ALERTA: El PDF tiene ${cantPaginas} páginas. Debe tener entre 6 y 12 páginas.`);
+  } else {
+    console.log(`✅ Extensión de páginas correcta: ${cantPaginas} pág.`);
+  }
+
+  if (nombreArchivo !== manualDeMarca.nombreArchivoRequerido) {
+    console.warn(`❌ ERROR DE ARCHIVO: El nombre "${nombreArchivo}" no coincide con el formato pedido: ${manualDeMarca.nombreArchivoRequerido}`);
+  } else {
+    console.log(`✅ Nombre de archivo correcto: ${nombreArchivo}`);
+  }
+}
+
+// Ejecutamos la prueba en la consola
+verificarEntrega(8, "UTN_DMD_U7-8_AmayaRamiro_ManualMarca.pdf");
