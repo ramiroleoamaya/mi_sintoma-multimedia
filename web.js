@@ -289,3 +289,52 @@ function verificarEntrega(cantPaginas, nombreArchivo) {
 
 // Ejecutamos la prueba en la consola
 verificarEntrega(8, "UTN_DMD_U7-8_AmayaRamiro_ManualMarca.pdf");
+// Importamos los módulos necesarios de Canvas y el sistema de archivos de Node
+const { createCanvas } = require('canvas');
+const fs = require('fs');
+
+// 1. Definimos las dimensiones (Formato Feed 4:5 - Mobile First: 1080x1350px)
+const ANCHO = 1080;
+const ALTO = 1350;
+
+// 2. Creamos el lienzo y el contexto 2D (nuestro "pincel" digital)
+const canvas = createCanvas(ANCHO, ALTO);
+const ctx = canvas.getContext('2d');
+
+// 3. Pintamos el fondo oscuro institucional (#121212)
+ctx.fillStyle = '#121212';
+ctx.fillRect(0, 0, ANCHO, ALTO);
+
+// 4. Agregamos una franja de acento con el Verde Neón (#39FF14)
+ctx.fillStyle = '#39FF14';
+ctx.fillRect(80, 1200, 920, 20);
+
+// 5. Configuramos y escribimos un texto institucional básico
+ctx.fillStyle = '#F4F1EA';
+ctx.font = 'bold 72px sans-serif';
+ctx.fillText('MI SINTOMA', 80, 200);
+
+ctx.fillStyle = '#D32F2F';
+ctx.font = '48px sans-serif';
+ctx.fillText('ARTE QUE LATE', 80, 280);
+
+// 6. Convertimos el canvas en un buffer y lo guardamos como imagen en la carpeta
+const buffer = canvas.toBuffer('image/png');
+fs.writeFileSync('pieza-generada.png', buffer);
+
+// Objeto de auditoría para verificar la ejecución
+const resultadoCanvas = {
+  archivo: "pieza-generada.png",
+  resolucion: `${ANCHO}x${ALTO}px`,
+  estado: "Exportado con éxito"
+};
+
+// Función de control por consola (Regla de Oro)
+function auditarCanvas(res) {
+  console.log("=== BANCO DE PRUEBAS: CANVAS GENERATOR ===");
+  console.log(`Archivo generado: ${res.archivo}`);
+  console.log(`Resolución: ${res.resolucion}`);
+  console.log(`⚡ Estado del circuito: ${res.estado}`);
+}
+
+auditarCanvas(resultadoCanvas);
