@@ -338,3 +338,38 @@ function auditarCanvas(res) {
 }
 
 auditarCanvas(resultadoCanvas);
+// Objeto de integración final para el sistema de marca: mi_sintoma
+const integracionMiSintoma = {
+  marca: "mi_sintoma",
+  plataforma: "Transmedia (Arte visual + Producción electrónica)",
+  conceptoEstrategico: "El síntoma visual y sonoro en la era digital",
+  paleta: {
+    fondo: "#121212",    // Negro underground
+    papel: "#F4F1EA",    // Blanco perla analógico
+    alerta: "#D32F2F",   // Rojo acento
+    neongreen: "#39FF14" // Verde neón CTA
+  },
+  campaña: {
+    objetivo: "Consideración y Conversión",
+    hook: "Foto de backstage con contraste dorado y sello central",
+    valor: "Titular Oswald Bold: MI SINTOMA / ARTE QUE LATE",
+    cta: "Botón interactivo - ESCUCHAR SESION"
+  },
+  estadoSistema: "Sincronizado y verificado para entrega UTN"
+};
+
+// Función para auditar el sistema completo en la terminal (Regla de Oro)
+function auditarSistemaMiSintoma(sistema) {
+  console.log("=== AUDITORÍA FINAL: SISTEMA MI_SINTOMA ===");
+  console.log(`Marca: ${sistema.marca} (${sistema.plataforma})`);
+  console.log(`Concepto: ${sistema.conceptoEstrategico}`);
+  console.log("\n[ESTRUCTURA DE CAMPAÑA - HOOK / VALOR / CTA]");
+  console.log(` └─ Objetivo: ${sistema.campaña.objetivo}`);
+  console.log(` └─ Hook: ${sistema.campaña.hook}`);
+  console.log(` └─ Valor: ${sistema.campaña.valor}`);
+  console.log(` └─ CTA: ${sistema.campaña.cta}`);
+  console.log(`\n⚡ Estado del circuito: ${sistema.estadoSistema}`);
+}
+
+// Ejecutamos la prueba en la consola
+auditarSistemaMiSintoma(integracionMiSintoma);
